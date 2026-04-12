@@ -1,3 +1,4 @@
+taskkill /F /IM node.exe /T >nul 2>&1
 @echo off
 setlocal
 cd /d %~dp0

@@ -30,7 +30,7 @@ export default function CarDetailPage() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    
+
     getCarById(id)
       .then(res => {
         if (mounted) {
@@ -73,8 +73,8 @@ export default function CarDetailPage() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: '80vh', display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-base)' }}>
-        <div style={{ width:40, height:40, border:'3px solid var(--border)', borderTopColor:'var(--red)', borderRadius:'50%', animation:'spin 1s linear infinite', marginBottom:20 }}></div>
+      <div style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-base)' }}>
+        <div style={{ width: 40, height: 40, border: '3px solid var(--border)', borderTopColor: 'var(--red)', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: 20 }}></div>
         <div style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-display)', letterSpacing: 2 }}>CARGANDO VEHÍCULO...</div>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
@@ -115,7 +115,7 @@ export default function CarDetailPage() {
 
       <div className="container section-sm" style={{ paddingBottom: 80 }}>
         <div className="detail-grid">
-          
+
           {/* Galería */}
           <div className="gallery-section">
             <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', aspectRatio: '16/9', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 15, boxShadow: '0 20px 40px rgba(0,0,0,0.3)' }}>
@@ -148,7 +148,7 @@ export default function CarDetailPage() {
                 <span className={`badge badge-${car.combustible || 'gasolina'}`}>{combustibleLbl}</span>
                 <span className="badge badge-diesel">{car.cambio === 'automatico' ? 'Automático' : 'Manual'}</span>
               </div>
-              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: '2.5rem', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 10 }}>{car.marca}<br/>{car.modelo}</h1>
+              <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: '2.5rem', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: 10 }}>{car.marca}<br />{car.modelo}</h1>
               <div style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: 25, fontFamily: 'var(--font-display)' }}>Año {car.año} · {formatNum(car.kilometros)} km</div>
               <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--red)', fontFamily: 'var(--font-display)', borderTop: '1px solid var(--border)', paddingTop: 20 }}>{formatNum(car.precio)} €</div>
             </div>
