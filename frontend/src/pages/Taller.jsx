@@ -37,7 +37,7 @@ const services = [
     description: 'Revisión previa para pasar la ITV sin problemas.'
   },
   {
-    icon: '📋', title: 'Otros servicios', image: '/img/itv.jpg',
+    icon: '📋', title: 'Otros servicios', image: '/img/otros.jpg',
     description: 'Servicios a peticion del cliente.'
   },
 ];
