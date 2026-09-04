@@ -7,7 +7,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const saved = sessionStorage.getItem('adminToken');
     if (saved) {
-      fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/verify`, { headers: { Authorization: `Bearer ${saved}` } })
+      fetch(`https://talleres-mo-backend.onrender.com/api/auth/verify`, { headers: { Authorization: `Bearer ${saved}` } })
         .then(r => r.json()).then(d => { if (d.valid) { setToken(saved); setAdmin(d.admin); } else sessionStorage.removeItem('adminToken'); })
         .catch(() => sessionStorage.removeItem('adminToken')).finally(() => setLoading(false));
     } else setLoading(false);
