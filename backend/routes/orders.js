@@ -28,7 +28,7 @@ router.post('/', orderLimiter, validateOrder, async (req, res) => {
   }
 
   try {
-    await sendOrderEmail(req.body);
+    sendOrderEmail(req.body).catch(err => console.error('Error enviando email de pedido:', err));
     res.json({ message: '¡Pedido recibido! Buscaremos tu coche y te contactaremos pronto.' });
   } catch (error) {
     console.error('Error enviando email de pedido:', error);
@@ -39,7 +39,7 @@ router.post('/', orderLimiter, validateOrder, async (req, res) => {
 // POST /api/orders/interest — Interés en un coche del catálogo
 router.post('/interest', orderLimiter, async (req, res) => {
   try {
-    await sendCarInterestEmail(req.body);
+    sendCarInterestEmail(req.body).catch(err => console.error('Error enviando email de interés:', err));
     res.json({ message: '¡Mensaje enviado! El equipo de Talleres M.O. te contactará pronto.' });
   } catch (error) {
     res.status(500).json({ error: 'Error al enviar el mensaje.' });

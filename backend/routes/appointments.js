@@ -37,7 +37,7 @@ router.post('/', appointmentLimiter, validateAppointment, async (req, res) => {
   }
 
   try {
-    await sendAppointmentEmail(req.body);
+    sendAppointmentEmail(req.body).catch(err => console.error('Error enviando email de cita:', err));
     res.json({ message: '¡Solicitud enviada! Te contactaremos pronto para confirmar la cita.' });
   } catch (error) {
     console.error('Error enviando email de cita:', error);
