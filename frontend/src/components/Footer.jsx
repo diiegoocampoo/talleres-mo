@@ -1,5 +1,17 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 export default function Footer() {
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 60000);
+    return () => clearInterval(t);
+  }, []);
+  const day = now.getDay();
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const isOpen = day >= 1 && day <= 5 && mins >= 420 && mins < 1020;
+  const isSaturday = day === 6;
+  const dotColor = isOpen ? '#4ade80' : isSaturday ? '#fbbf24' : '#f87171';
+  const badgeText = isOpen ? 'Abierto ahora' : isSaturday ? 'Cerrado · solo cita previa' : 'Cerrado ahora';
   return (
     <footer style={{ background: 'var(--bg-nav)', borderTop: '1px solid var(--border)', padding: '60px 0 28px' }}>
       <div className="container">
@@ -22,7 +34,19 @@ export default function Footer() {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: 3, color: 'var(--red)', textTransform: 'uppercase', marginBottom: 16 }}>Contacto</div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: 8 }}>📍 C. Alday, 36, 39600 Maliaño</p>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: 8 }}>📞 669 85 17 78</p>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: 8 }}>🕐 Lun–Vie: 8:00 – 17:00</p>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: `1px solid ${dotColor}55`, borderRadius: 999, padding: '4px 10px', marginBottom: 10, fontFamily: 'var(--font-display)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: dotColor }}>
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: dotColor, flexShrink: 0 }} />
+              {badgeText}
+            </div>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: 1, textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>🕐 Horario</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              {[['Lunes – Viernes', '7:00 – 17:00'], ['Sábado', 'Bajo cita previa'], ['Domingo', 'Cerrado']].map(([d, h]) => (
+                <div key={d} style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: '0.85rem' }}>
+                  <span style={{ color: 'var(--text-secondary)' }}>{d}</span>
+                  <span style={{ color: 'var(--text-muted)', textAlign: 'right' }}>{h}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
