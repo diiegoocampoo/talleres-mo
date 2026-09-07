@@ -34,11 +34,11 @@ export default function Footer() {
             <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: 3, color: 'var(--red)', textTransform: 'uppercase', marginBottom: 16 }}>Contacto</div>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: 8 }}>📍 C. Alday, 36, 39600 Maliaño</p>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: 8 }}>📞 669 85 17 78</p>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: 1, textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>🕐 Horario</div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(255,255,255,0.06)', border: `1px solid ${dotColor}55`, borderRadius: 999, padding: '4px 10px', marginBottom: 10, fontFamily: 'var(--font-display)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: dotColor }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: dotColor, flexShrink: 0 }} />
               {badgeText}
             </div>
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.9rem', letterSpacing: 1, textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: 8 }}>🕐 Horario</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
               {[['Lunes – Viernes', '7:00 – 17:00'], ['Sábado', 'Bajo cita previa'], ['Domingo', 'Cerrado']].map(([d, h]) => (
                 <div key={d} style={{ display: 'flex', justifyContent: 'space-between', gap: 12, fontSize: '0.85rem' }}>
